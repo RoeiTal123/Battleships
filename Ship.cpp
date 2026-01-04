@@ -27,7 +27,7 @@ namespace Battle
     void Ship::SetName(const char *n) // sets name
     {
         if (name)
-            delete[] name; 
+            delete[] name;
         if (n)
         {
             name = new char[strlen(n) + 1];
@@ -36,6 +36,32 @@ namespace Battle
         else
         {
             name = nullptr;
+        }
+    }
+
+    void Ship::takeHit()
+    {
+        if (this->hitsTaken >= this->size)
+        {
+            std::cout << "the ship is already gone \n";
+        }
+        else
+        {
+            this->hitsTaken++;
+            if (this->hitsTaken >= this->size)
+            {
+                std::cout << this->name << " got hit! \n";
+            }
+        }
+    }
+
+    bool Ship::isSunk()
+    {
+        if (this->hitsTaken >= this->size)
+        {
+            return true;
+        } else {
+            return false;
         }
     }
 }
