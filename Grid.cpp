@@ -51,7 +51,7 @@ namespace Battle
             for (int i = col; i <= endCol; i++)
             {
                 if (cells[row][i] != '~')
-                { // Not empty → occupied
+                { 
                     std::cout << "Cannot place ship: space already occupied\n";
                     return false;
                 }
@@ -65,7 +65,7 @@ namespace Battle
             for (int i = row; i <= endRow; i++)
             {
                 if (cells[i][col] != '~')
-                { // Not empty → occupied
+                { 
                     std::cout << "Cannot place ship: space already occupied\n";
                     return false;
                 }
