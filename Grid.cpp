@@ -19,6 +19,10 @@ namespace Battle
         }
     }
 
+    Grid::~Grid()
+    {
+    }
+
     bool Grid::isTileOccupied(int row, int col) const
     {
         if (row >= 10 || row < 0 || col >= 10 || col < 0)

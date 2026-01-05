@@ -5,7 +5,8 @@
 // ID: 327397105, name: Denis Beigel
 // ID: 212692875, name: Roei Tal
 
-namespace Battle {
+namespace Battle 
+{
 
     class Ship{
         private : 

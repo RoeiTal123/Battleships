@@ -5,16 +5,17 @@
 #include <ctime>     // For std::time()
 #include "Game.hpp"
 #include "HumanPlayer.hpp"
-#include "AiPlayer.hpp"
+#include "AIPlayer.hpp"
 
 int main() {
+    using namespace Battle;
     // Seed the random number generator for AI placement and moves
     // You need it to stay HERE when you use random in the AiPlayer class
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
     // Create two players: one human, one AI
     Player* p1 = new HumanPlayer("Human");
-    Player* p2 = new AiPlayer("Computer");
+    Player* p2 = new AIPlayer("Computer");
 
     // Create the Game object with the two players
     Game game(p1, p2);
