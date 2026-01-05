@@ -9,10 +9,10 @@ namespace Battle
 {
     class Grid
     {
-    public:
+    private:
         char cells[10][10];
 
-    private:
+    public:
         bool isTileOccupied(int row, int col) const;
         bool inBounds(int row, int col, int shipSize, bool horizontal) const;
         void placeShip(int row, int col, int shipSize, bool horizontal);
