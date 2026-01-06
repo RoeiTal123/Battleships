@@ -10,17 +10,26 @@ namespace Battle
 {
     void Game::setup()
     {
+        player1->placeAllShips();
+        player2->placeAllShips();
     }
 
     void Game::start()
     {
     }
 
-    Game::Game(Player *p1, Player *p2)
+    bool Game::isGameOver() const
     {
+        if (player1->allShipsSunk() || player2->allShipsSunk())
+            return true;
     }
 
-    Game::Game(/* args */)
+    Game::Game(Player *p1, Player *p2)
+    {
+        
+    }
+
+    Game::Game()
     {
     }
     

@@ -7,6 +7,9 @@
 #include "HumanPlayer.hpp"
 #include "AIPlayer.hpp"
 
+// ID: 327397105, name: Denis Beigel
+// ID: 212692875, name: Roei Tal
+
 int main() {
     using namespace Battle;
     // Seed the random number generator for AI placement and moves

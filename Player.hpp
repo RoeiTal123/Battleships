@@ -32,6 +32,7 @@ namespace Battle
         Player(const char* name); // Initializes playerName and constructs grid
         Player();
         virtual ~Player(); // Cleans up playerName and Ship pointers.
+        Player& Player::operator=(const Player& other);
 
         void SetPlayerName(const char* shipName);
         void ClearShips();

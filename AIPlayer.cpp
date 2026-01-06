@@ -10,7 +10,7 @@ namespace Battle
 {
     AIPlayer::AIPlayer(/* args */)
     {
-        
+
     }
 
     AIPlayer::~AIPlayer()
