@@ -11,7 +11,7 @@ namespace Battle
 {
     class Player
     {
-    private:
+    protected:
         char* playerName;
         Ship* ships[5]; // Pointers to ships the player has
         Grid grid; // 10 x 10
@@ -36,5 +36,8 @@ namespace Battle
 
         void SetPlayerName(const char* shipName);
         void ClearShips();
+
+        Grid& getGrid() { return grid; }
+        Ship* getShip(int index) { return ships[index]; }
     };
 }

@@ -54,20 +54,23 @@ Player& Player::operator=(const Player& other)
 
         int shipSizes[] = {5, 4, 3, 3, 2}; // Standard Fleet
 
-        for (int size : shipSizes) {
-        bool placed = false;
-        
-        while (!placed) {
-            int row = RandomAxisPoint(engine);
-            int col = RandomAxisPoint(engine);
-            bool horizontal = RandomBool(engine);
+        for (int size : shipSizes) 
+        {
+            bool placed = false;
+            
+            while (!placed) 
+            {
+                int row = RandomAxisPoint(engine);
+                int col = RandomAxisPoint(engine);
+                bool horizontal = RandomBool(engine);
 
-            if (grid.inBounds(row, col, size, horizontal)) {
-                grid.placeShip(row, col, size, horizontal);
-                placed = true; // Exit
+                if (grid.inBounds(row, col, size, horizontal)) 
+                {
+                    grid.placeShip(row, col, size, horizontal);
+                    placed = true; // Exit
+                }
             }
         }
-    }
 }
 
     void Player::makeMove(Player *opponent)

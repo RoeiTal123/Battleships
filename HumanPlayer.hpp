@@ -11,12 +11,12 @@ namespace Battle
 {
     class HumanPlayer : public Player
     {
-    private:
-        /* data */
     public:
-        HumanPlayer(const char* name) : Player() {}
-        HumanPlayer();
-        ~HumanPlayer();
-    };
+        HumanPlayer(const char* name) : Player(name) {}
 
+        void placeAllShips() override;
+        void makeMove(Player* opponent) override;
+        
+        virtual ~HumanPlayer() = default;
+    };
 }
