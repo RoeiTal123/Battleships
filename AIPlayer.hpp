@@ -13,10 +13,8 @@ namespace Battle
     {
     private:
         /* data */
-    public:
-        AIPlayer(const char* name) : Player() {}
-        AIPlayer();
-        ~AIPlayer();
+   public:
+        AIPlayer(const char* name) : Player(name) {}
+        virtual ~AIPlayer() = default;
     };
-
 }
