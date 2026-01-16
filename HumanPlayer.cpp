@@ -21,6 +21,7 @@ namespace Battle
         for (int size : shipSizes) 
         {
             int row, col;
+            std::string input;
             bool horizontal;
             bool placed = false;
             
@@ -28,10 +29,17 @@ namespace Battle
             {
                 std::cout << "Enter row: ";
                 std::cin >> row;
+                row--;
                 std::cout << "Enter col: ";
-                std::cin >> col;
-                std::cout << "Horozontal? ";
-                std::cin >> horizontal;
+                std::cin >> col;                //user will enter 'row 1' which would be 0, so row n is actually n-1
+                col--;
+                std::cout << "Horizontal? ";
+                std::cin >> input;
+                if (input == "no" || input == "No" || input == "NO" || input == "nO"){
+                    horizontal = false;
+                } else {
+                    horizontal = true;
+                }
                 if (grid.isTileOccupied(row, col))
                 {
                     std::cout << "Tile is occupied";
