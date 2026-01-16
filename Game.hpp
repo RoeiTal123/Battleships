@@ -6,7 +6,7 @@
 // ID: 327397105, name: Denis Beigel
 // ID: 212692875, name: Roei Tal
 
-enum Winner { Player1, Player2, None};
+// enum Winner { Player1, Player2, None };
 
 namespace Battle
 {
@@ -15,7 +15,7 @@ namespace Battle
     private:
         Player* player1;
         Player* player2;
-        Winner w = None;
+        // Winner w = None;
     public:
         void setup(); // Calls player1->placeAllShips();, then player2->placeAllShips();
 

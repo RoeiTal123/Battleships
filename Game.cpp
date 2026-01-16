@@ -16,6 +16,23 @@ namespace Battle
 
     void Game::start()
     {
+        bool gameLoop = true;
+
+        while (gameLoop)
+        {
+            player1->makeMove(player2);
+            if (isGameOver() == true)
+            {
+                std::cout << "Player 1 wins!";
+                gameLoop = false;
+            }
+            player2->makeMove(player1);
+            if (isGameOver() == true)
+            {
+                std::cout << "Player 2 wins!";
+                gameLoop = false;
+            }
+        }
     }
 
     bool Game::isGameOver() const
@@ -26,14 +43,17 @@ namespace Battle
 
     Game::Game(Player *p1, Player *p2)
     {
-        
+        player1 = p1;
+        player2 = p2;
     }
 
     Game::Game()
     {
+
     }
     
     Game::~Game()
     {
+        
     }
 }
