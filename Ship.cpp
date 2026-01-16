@@ -8,10 +8,21 @@
 
 namespace Battle
 {
-    Ship::Ship(const char *name, int shipSize) : name(nullptr) // create constructor by details
+    Ship::Ship(const char *name, int shipSize, int givenX = 0, int givenY = 0, const char *direction) : name(nullptr) // create constructor by details
     {
         SetName(name);
         SetSize(shipSize);
+        startingX = givenX;
+        startingY = givenY;
+        this->direction = new char[strlen(direction) + 1];
+        if (direction)
+        {
+            direction = direction;
+        }
+        else
+        {
+            direction = "horizontal";
+        }
     }
 
     Ship::~Ship()
@@ -39,6 +50,25 @@ namespace Battle
         }
     }
 
+    bool Ship::occupies(int row, int col) const
+    {
+        if (direction == nullptr)
+            return false; // safety check
+
+        // Check horizontal
+        if (strcmp(direction, "horizontal") == 0)
+        {
+            return row == startingX && col >= startingY && col < startingY + size;
+        }
+        // Check vertical
+        else if (strcmp(direction, "vertical") == 0)
+        {
+            return col == startingY && row >= startingX && row < startingX + size;
+        }
+        // Optional: handle invalid directions
+        return false;
+    }
+
     void Ship::takeHit()
     {
         if (this->hitsTaken >= this->size)
@@ -60,7 +90,9 @@ namespace Battle
         if (this->hitsTaken >= this->size)
         {
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }

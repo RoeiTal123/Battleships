@@ -13,6 +13,9 @@ namespace Battle
         char* name;
         int size;
         int hitsTaken;
+        int startingX;
+        int startingY;
+        char* direction;
 
         public :
 
@@ -24,14 +27,15 @@ namespace Battle
             return "default";
         }
 
-        Ship(const char* shipName, int shipSize);
+        Ship(const char* shipName, int shipSize, int givenX, int givenY, const char* direction);
         virtual ~Ship();
         virtual void takeHit();
+        bool occupies(int row, int col) const;
         bool isSunk();
     };
 
-
-    class Carrier : public Ship
+    //["Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"]
+        class Carrier : public Ship
         {
         public:
              const char* getType() const override
@@ -40,7 +44,7 @@ namespace Battle
              }
     
             Carrier()
-                : Ship("Carrier", 5) {} 
+                : Ship("Carrier", 5, 0, 0, "north") {} 
         };
     
         class BattleShip : public Ship
@@ -52,7 +56,7 @@ namespace Battle
              }
     
              BattleShip()
-                : Ship("Battleship", 4) {} 
+                : Ship("Battleship", 4, 0, 0, "north") {} 
         };
     
         class Cruiser : public Ship
@@ -64,7 +68,7 @@ namespace Battle
              }
     
              Cruiser()
-                : Ship("Cruiser", 3) {} 
+                : Ship("Cruiser", 3, 0, 0, "north") {} 
         };
 
         class Submarine : public Ship
@@ -76,7 +80,7 @@ namespace Battle
              }
     
              Submarine()
-                : Ship("Submarine", 3) {} 
+                : Ship("Submarine", 3, 0, 0, "north") {} 
         };
     
         class Destroyer : public Ship
@@ -88,6 +92,6 @@ namespace Battle
              }
     
              Destroyer()
-                : Ship("Destroyer", 2) {} 
+                : Ship("Destroyer", 2, 0, 0, "north") {} 
         };
 }

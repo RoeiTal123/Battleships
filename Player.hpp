@@ -15,6 +15,9 @@ namespace Battle
         char* playerName;
         Ship* ships[5]; // Pointers to ships the player has
         Grid grid; // 10 x 10
+        int shipCount;
+
+        int shipCount; // for general purposes only
 
     public:
         virtual void placeAllShips(); // Places the 5 ship onto the grid: Each ship get a (row, col) (random || expecting input)
@@ -27,6 +30,8 @@ namespace Battle
 
         bool allShipsSunk() const; // If all 5 ships are Sunk, this retuns true
 
+        void addShip(Ship* ship);
+
         void displayGrid(); // Print the grip (Somehow...)
 
         Player(const char* name); // Initializes playerName and constructs grid
@@ -35,6 +40,7 @@ namespace Battle
         Player& Player::operator=(const Player& other);
 
         void SetPlayerName(const char* shipName);
+        int getShipCount();
         void ClearShips();
 
         Grid& getGrid() { return grid; }
