@@ -62,8 +62,10 @@ namespace Battle
         int row, col;
         std::cout << "Select row for attack: ";
         std::cin >> row;
+        row--;
         std::cout << "Select col for attack: ";
         std::cin >> col;
+        col--;
         if (opponent->getGrid().getCell(row, col) == 'S')
         {
             opponent->getShip(1)->takeHit(); // Need to find the correct ship
