@@ -49,7 +49,6 @@ namespace Battle
 
     bool Ship::occupies(int row, int col) const
     {
-        std::cout << direction << "is the direction";
         if (direction == nullptr)
             return false; // safety check
 
