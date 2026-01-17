@@ -17,7 +17,7 @@ int main() {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
     // Create two players: one human, one AI
-    Player* p1 = new AIPlayer("Human");
+    Player* p1 = new HumanPlayer("Human");
     Player* p2 = new AIPlayer("Computer");
 
     // Create the Game object with the two players
@@ -26,7 +26,7 @@ int main() {
     // Set up the game (place all ships)
     game.setup();
 
-    game.test();
+    // game.test();
 
     // Start the turn-by-turn gameplay
     game.start();

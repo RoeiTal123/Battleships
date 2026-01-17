@@ -96,7 +96,7 @@ namespace Battle
 
         std::cout << "\n--- Player's Grid ---" << std::endl;
         this->displayGrid();
-        std::cout << "\n--- Opponent's Grid ---" << std::endl;
-        opponent->displayGrid();
+        // std::cout << "\n--- Opponent's Grid ---" << std::endl;
+        // opponent->displayGrid();
     }
 }
