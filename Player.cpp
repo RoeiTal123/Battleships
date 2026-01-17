@@ -61,8 +61,6 @@ namespace Battle
         {
             ships[shipCount] = newShip; // Ensure this is not a fixed index like [0]
             shipCount++;
-            std::cout << "ShipAdded:" << std::endl; 
-            newShip->printShip();
         }
     }
 
