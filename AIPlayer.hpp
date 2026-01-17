@@ -15,8 +15,9 @@ namespace Battle
         
     public:
         AIPlayer(const char* name) : Player(name) {}
-        
+
         void placeAllShips() override;
+        void makeMove(Player* opponent) override;
         virtual ~AIPlayer();
     };
 }
