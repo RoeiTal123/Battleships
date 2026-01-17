@@ -78,9 +78,12 @@ namespace Battle
         else
         {
             this->hitsTaken++;
-            if (this->hitsTaken >= this->size)
+            if (this->hitsTaken < this->size)
             {
                 std::cout << this->name << " got hit! \n";
+            } else if (this->hitsTaken >= this->size)
+            {
+                std::cout << this->name << " got sunk! \n";
             }
         }
     }
