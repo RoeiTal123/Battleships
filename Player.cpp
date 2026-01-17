@@ -69,6 +69,10 @@ namespace Battle
     {
         for (int i = 0; i < 5; i++)
         {
+            if (ships[i] == nullptr)
+            {
+                std::cout << "NULL SHIP index:" << i << std::endl;
+            }
             if (ships[i]->isSunk() == false)
             {
                return false;
