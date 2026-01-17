@@ -32,7 +32,6 @@ namespace Battle
         virtual void takeHit();
         bool occupies(int row, int col) const;
         bool isSunk();
-
         void printShip();
     };
 
@@ -90,7 +89,8 @@ namespace Battle
              {
                  return "Destroyer";
              }
+    
              Destroyer(int row, int col, const char* dir) 
-                : Ship("Carrier", 5, row, col, dir) {} 
+                : Ship("Carrier", 5, row, col, dir) {}  
         };
 }

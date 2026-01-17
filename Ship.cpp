@@ -8,26 +8,24 @@
 
 namespace Battle
 {
-    Ship::Ship(const char *name, int shipSize, int givenX, int givenY, const char *direction) : name(nullptr) // create constructor by details
+    Ship::Ship(const char *name, int shipSize, int givenX, int givenY, const char *dir) 
+        : name(nullptr), direction(nullptr), hitsTaken(0)
     {
         SetName(name);
         SetSize(shipSize);
         startingX = givenX;
         startingY = givenY;
-        this->direction = new char[strlen(direction) + 1];
-        if (direction)
-        {
-            direction = direction;
-        }
-        else
-        {
-            direction = "horizontal";
-        }
+        const char* sourceDir = (dir != nullptr) ? dir : "horizontal";
+        
+        // Allocate and copy
+        this->direction = new char[strlen(sourceDir) + 1];
+        strcpy(this->direction, sourceDir);
     }
 
     Ship::~Ship()
     {
         delete[] name;
+        delete[] direction;
     }
 
     void Ship::SetSize(int size) // sets size
