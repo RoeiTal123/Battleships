@@ -51,31 +51,31 @@ namespace Battle
         return *this;
     }
 
-    void Player::placeAllShips() // AIPlayer will used this funtion, Overide will be made for HumanPlayer
+    void Player::placeAllShips()
     {
 
     }
 
     void Player::makeMove(Player *opponent)
     {
-        int row = rand();
-        int col = rand();
+        int row = getRandomCoordinate();
+        int col = getRandomCoordinate();
 
         if (opponent->grid.getCell(row, col) == 'S')
         {
-            opponent->ships[1]->takeHit(); // Need to find the correct ship
-            opponent->grid.markHit(row, col);
+           
         }
         else
         {
             opponent->grid.markMiss(row, col);
         }
-
+        std::cout << "Attack: (" << row << ", " << col << ")" << std::endl;
         this->grid.printGrid();
         opponent->grid.printGrid();
     }
 
-    void Player::addShip(Ship* newShip){
+    void Player::addShip(Ship* newShip)
+    {
         ships[shipCount++] = newShip;
     }
 
@@ -86,13 +86,27 @@ namespace Battle
 
     bool Player::allShipsSunk() const
     {
+        int validShipsFound = 0;
+
         for (int i = 0; i < 5; i++)
         {
-            if (ships[i]->isSunk() == false)
+            // 1. Safety check: skip empty slots
+            if (ships[i] != nullptr)
             {
-                return false;
+                validShipsFound++;
+                
+                // 2. If we find even ONE ship that is NOT sunk, the player is still in the game
+                if (ships[i]->isSunk() == false)
+                {
+                    return false; 
+                }
             }
         }
+
+        // 3. If we found 0 ships total, the player hasn't "lost" yet (handles setup errors)
+        if (validShipsFound == 0) return false;
+
+        // 4. If we found ships and NONE of them returned false (meaning they are all sunk)
         return true;
     }
 

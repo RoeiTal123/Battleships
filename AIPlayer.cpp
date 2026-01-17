@@ -31,6 +31,7 @@ namespace Battle
             }
         }
     }
+        
 
     AIPlayer::~AIPlayer()
     {

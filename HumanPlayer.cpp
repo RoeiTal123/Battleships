@@ -31,8 +31,22 @@ namespace Battle
                 std::cout << "\nPlacing " << shipNames[i] << " (Size " << shipSizes[i] << ")" << std::endl;
                 std::cout << "Enter row (0-9): "; 
                 std::cin >> row;
+                if (!(std::cin >> row)) 
+                {
+                    std::cin.clear(); // Reset fail flag
+                    std::cin.ignore(1000, '\n'); // Clear the bad input
+                    std::cout << "Invalid input! Use numbers 0-9." << std::endl;
+                    continue;
+                }
                 std::cout << "Enter col (0-9): "; 
                 std::cin >> col;
+                if (!(std::cin >> col)) 
+                {
+                    std::cin.clear(); // Reset fail flag
+                    std::cin.ignore(1000, '\n'); // Clear the bad input
+                    std::cout << "Invalid input! Use numbers 0-9." << std::endl;
+                    continue;
+                }
                 
                 std::cout << "Horizontal? (yes/no): ";
                 std::cin >> input;
@@ -74,10 +88,8 @@ namespace Battle
         int row, col;
         std::cout << "Select row for attack: ";
         std::cin >> row;
-        row--;
         std::cout << "Select col for attack: ";
         std::cin >> col;
-        col--;
         if (opponent->getGrid().getCell(row, col) == 'S')
         {
             for (int i = 0; i < opponent->getShipCount(); i++)

@@ -56,7 +56,7 @@ namespace Battle
             {
                 if (cells[row][i] != '~')
                 { 
-                    std::cout << "The ship reaches out of bounds\n";
+                    //std::cout << "The ship reaches out of bounds\n";
                     return false;
                 }
             }
@@ -70,7 +70,7 @@ namespace Battle
             {
                 if (cells[i][col] != '~')
                 { 
-                    std::cout << "The ship reaches out of bounds\n";
+                    //std::cout << "The ship reaches out of bounds\n";
                     return false;
                 }
             }
@@ -78,7 +78,7 @@ namespace Battle
 
         if (endRow >= 10 || endCol >= 10)
         {
-            std::cout << "the ship reaches out of bounds \n";
+            //std::cout << "the ship reaches out of bounds \n";
             return false;
         }
         else
@@ -169,14 +169,11 @@ namespace Battle
     void Grid::printGrid()
     {
         std::cout << "     0   1   2   3   4   5   6   7   8   9\n";
-        for (int row = 0; row < 10; ++row)
-        {
+        for (int row = 0; row < 10; ++row) {
             std::cout << "   -----------------------------------------\n";
-            std::cout << " " << row << " |";
-
-            for (int col = 0; col < 10; ++col)
-            {
-                std::cout << " " << this->cells[row][col] << " |";
+            std::cout << " " << row << " |"; // Print row index
+            for (int col = 0; col < 10; ++col) {
+                std::cout << " " << cells[row][col] << " |";
             }
             std::cout << "\n";
         }
