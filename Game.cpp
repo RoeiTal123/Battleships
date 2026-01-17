@@ -19,6 +19,7 @@ namespace Battle
         int round = 1;
         bool gameLoop = true;
         while (gameLoop) {
+
             std::cout << "Round:" << round << std::endl;
             // Player 1 Turn
             std::cout << "\n--- Player 1's Turn ---" << std::endl;
@@ -27,7 +28,6 @@ namespace Battle
                 std::cout << "Player 1 wins! All enemy ships sunk." << std::endl;
                 break; 
             }
-
             // Player 2 Turn
             std::cout << "\n--- Player 2's Turn ---" << std::endl;
             player2->makeMove(player1);

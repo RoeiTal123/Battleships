@@ -57,7 +57,13 @@ namespace Battle
 
     void Player::addShip(Ship* newShip)
     {
-        ships[shipCount++] = newShip;
+        if (shipCount < 5) 
+        {
+            ships[shipCount] = newShip; // Ensure this is not a fixed index like [0]
+            shipCount++;
+            std::cout << "ShipAdded:" << std::endl; 
+            newShip->printShip();
+        }
     }
 
     int Battle::Player::getRandomCoordinate()
@@ -134,6 +140,13 @@ namespace Battle
         for (int i = 0; i < 5; i++)
         {
             ships[i] = nullptr;
+        }
+    }
+    void Player::printAllShips()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            ships[i]->printShip();
         }
     }
 }

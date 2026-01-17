@@ -8,7 +8,8 @@
 
 namespace Battle
 {
-    Ship::Ship(const char *name, int shipSize, int givenX, int givenY, const char *direction) : name(nullptr) // create constructor by details
+    Ship::Ship(const char *name, int shipSize, int givenX, int givenY, const char *dir) 
+        : name(nullptr), direction(nullptr), hitsTaken(0)
     {
         SetName(name);
         SetSize(shipSize);
@@ -29,6 +30,7 @@ namespace Battle
     Ship::~Ship()
     {
         delete[] name;
+        delete[] direction;
     }
 
     void Ship::SetSize(int size) // sets size
