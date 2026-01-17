@@ -41,6 +41,8 @@ namespace Battle
 
     bool Game::isGameOver() const
     {
+        player1->displayGrid();
+        player2->displayGrid();
         return player1->allShipsSunk() || player2->allShipsSunk();
     }
 

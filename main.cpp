@@ -20,23 +20,20 @@ int main() {
     Player* p1 = new AIPlayer("Human");
     Player* p2 = new AIPlayer("Computer");
 
-    p1->placeAllShips();
-    p1->printAllShips();
-
     // Create the Game object with the two players
-    // Game game(p1, p2);
+    Game game(p1, p2);
 
     // Set up the game (place all ships)
-    // game.setup();
+    game.setup();
 
-    // game.test();
+    game.test();
 
     // Start the turn-by-turn gameplay
-    // game.start();
+    game.start();
 
     // If needed, you could delete the players here, but assume Game or Player destructors handle cleanup.
-    // delete p1;
-    // delete p2;
+    delete p1;
+    delete p2;
 
     return 0;
 }
