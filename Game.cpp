@@ -18,6 +18,7 @@ namespace Battle
     {
         int round = 1;
         bool gameLoop = true;
+        std::cout << "\n Game Started!" << std::endl;
         while (gameLoop) {
 
             std::cout << "Round:" << round << std::endl;

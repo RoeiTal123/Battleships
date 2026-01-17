@@ -17,7 +17,9 @@ namespace Battle
         bool inBounds(int row, int col, int shipSize, bool horizontal) const;
         void placeShip(int row, int col, int shipSize, bool horizontal);
         void markHit(int row, int col);
+        void markHitSimple(int row, int col);
         void markMiss(int row, int col);
+        void markMissSimple(int row, int col);
         char getCell(int row, int col) const;
 
         void printGrid();

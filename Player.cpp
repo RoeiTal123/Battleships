@@ -89,6 +89,10 @@ namespace Battle
     {
         grid.printGrid();
     }
+    void Player::displayHitGrid()
+    {
+        hitGrid.printGrid();
+    }
 
     Player::Player(const char *name) : playerName(nullptr)
     {

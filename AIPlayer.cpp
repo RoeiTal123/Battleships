@@ -78,17 +78,16 @@ namespace Battle
             }
 
             opponent->getGrid().markHit(row, col);
+            this->getHitGrid().markHitSimple(row, col);
         }
         else
         {
             std::cout << "Miss at (" << row << ", " << col << ")" << std::endl;
             opponent->getGrid().markMiss(row, col);
+            this->getHitGrid().markMissSimple(row, col);
         }
-
-        std::cout << "\n--- Player's Grid ---" << std::endl;
-        this->displayGrid();
-        std::cout << "\n--- Opponent's Grid ---" << std::endl;
-        opponent->displayGrid();
+        std::cout << "\n--- AIPlayer's Hit Grid ---" << std::endl;
+        this->displayHitGrid();
     }
 
     AIPlayer::~AIPlayer()

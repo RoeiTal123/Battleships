@@ -15,6 +15,7 @@ namespace Battle
         char* playerName;
         Ship* ships[5]; // Pointers to ships the player has
         Grid grid; // 10 x 10
+        Grid hitGrid; // 10 x 10
         int shipCount; // for general purposes only
 
     public:
@@ -32,7 +33,8 @@ namespace Battle
 
         int getRandomCoordinate();
 
-        void displayGrid(); // Print the grip (Somehow...)
+        void displayGrid();
+        void displayHitGrid();
 
         Player(const char* name); // Initializes playerName and constructs grid
         Player();
@@ -45,6 +47,7 @@ namespace Battle
         void printAllShips();
 
         Grid& getGrid() { return grid; }
+        Grid& getHitGrid() { return hitGrid; }
         Ship* getShip(int index) { return ships[index]; }
     };
 }

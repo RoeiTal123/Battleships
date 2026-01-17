@@ -132,6 +132,22 @@ namespace Battle
             std::cout << "Tile [" << row << "][" << col << "] has already been attacked\n";
         }
     }
+    void Grid::markHitSimple(int row, int col)
+    {
+        if (row < 0 || row >= 10 || col < 0 || col >= 10)
+        {
+            std::cout << "This tile is out of range\n";
+            return;
+        }
+
+        char &cell = cells[row][col];
+
+        if (cell == '~')
+        {
+            cell = 'X';
+        }
+
+    }
 
     void Grid::markMiss(int row, int col)
     {
@@ -151,6 +167,21 @@ namespace Battle
         else if (cell == 'X' || cell == 'M')
         {
             std::cout << "Tile [" << row << "][" << col << "] has already been attacked\n";
+        }
+    }
+    void Grid::markMissSimple(int row, int col)
+    {
+        if (row < 0 || row >= 10 || col < 0 || col >= 10)
+        {
+            std::cout << "This tile is out of range\n";
+            return;
+        }
+
+        char &cell = cells[row][col];
+
+        if (cell == '~')
+        {
+            cell = 'M';
         }
     }
 

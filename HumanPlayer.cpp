@@ -45,7 +45,7 @@ namespace Battle
                     std::cout << "Error: Ship is off the grid!" << std::endl;
                     continue;
                 }
-                if (grid.isTileOccupied(row, col)) { // Note: You should ideally check all tiles the ship covers
+                if (grid.isTileOccupied(row, col)) {
                     std::cout << "Error: Tile is occupied!" << std::endl;
                     continue;
                 }
@@ -88,15 +88,14 @@ namespace Battle
                 }
             }
             opponent->getGrid().markHit(row, col);
+            this->getHitGrid().markHitSimple(row, col);
         }
         else
         {
             opponent->getGrid().markMiss(row, col);
+            this->getHitGrid().markMissSimple(row, col);
         }
-
-        std::cout << "\n--- Player's Grid ---" << std::endl;
-        this->displayGrid();
-        std::cout << "\n--- Opponent's Grid ---" << std::endl;
-        opponent->displayGrid();
+        std::cout << "\n--- HumanPlayer's Hit Grid ---" << std::endl;
+        this->displayHitGrid();
     }
 }
