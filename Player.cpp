@@ -34,7 +34,7 @@ namespace Battle
         }
 
         for (int i = 0; i < 5; ++i)
-        { // Deep copy of player ships
+        { 
             if (other.ships[i])
             {
                 // ships[i] = other.ships[i]->clone(); // Need a virtuale clone
@@ -58,20 +58,41 @@ namespace Battle
 
     void Player::makeMove(Player *opponent)
     {
-        int row = getRandomCoordinate();
-        int col = getRandomCoordinate();
+       int row, col;
+        char targetCell;
 
-        if (opponent->grid.getCell(row, col) == 'S')
+        do {
+            row = getRandomCoordinate();
+            col = getRandomCoordinate();
+            targetCell = opponent->grid.getCell(row, col);
+        } while (targetCell == 'X' || targetCell == 'M');
+
+        if (targetCell == 'S')
         {
-           
+            std::cout << "HIT at (" << row << ", " << col << ")!" << std::endl;
+            bool shipFound = false;
+            for (int i = 0; i < opponent->getShipCount(); i++)
+            {
+                Ship* currentShip = opponent->getShip(i);
+                if (currentShip != nullptr && currentShip->occupies(row, col))
+                {
+                    currentShip->takeHit();
+                    std::cout << "Target damaged: " << currentShip->getType() << std::endl;
+                    shipFound = true;
+                    break; // Ship is found
+                }
+            }
+
+            opponent->grid.markHit(row, col);
         }
         else
         {
+            std::cout << "Miss at (" << row << ", " << col << ")" << std::endl;
             opponent->grid.markMiss(row, col);
         }
-        std::cout << "Attack: (" << row << ", " << col << ")" << std::endl;
-        this->grid.printGrid();
-        opponent->grid.printGrid();
+
+        std::cout << "--- " << playerName << "'s View ---" << std::endl;
+        opponent->displayGrid();
     }
 
     void Player::addShip(Ship* newShip)
@@ -86,27 +107,13 @@ namespace Battle
 
     bool Player::allShipsSunk() const
     {
-        int validShipsFound = 0;
-
         for (int i = 0; i < 5; i++)
         {
-            // 1. Safety check: skip empty slots
-            if (ships[i] != nullptr)
+            if (ships[i]->isSunk() == false)
             {
-                validShipsFound++;
-                
-                // 2. If we find even ONE ship that is NOT sunk, the player is still in the game
-                if (ships[i]->isSunk() == false)
-                {
-                    return false; 
-                }
+               return false;
             }
         }
-
-        // 3. If we found 0 ships total, the player hasn't "lost" yet (handles setup errors)
-        if (validShipsFound == 0) return false;
-
-        // 4. If we found ships and NONE of them returned false (meaning they are all sunk)
         return true;
     }
 
