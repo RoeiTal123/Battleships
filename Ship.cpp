@@ -15,11 +15,16 @@ namespace Battle
         SetSize(shipSize);
         startingX = givenX;
         startingY = givenY;
-        const char* sourceDir = (dir != nullptr) ? dir : "horizontal";
-        
-        // Allocate and copy
-        this->direction = new char[strlen(sourceDir) + 1];
-        strcpy(this->direction, sourceDir);
+        this->direction = new char[strlen(direction) + 1];
+        if (direction)
+        {
+            strcpy(this->direction, direction);
+        }
+        else
+        {
+            strcpy(this->direction, "horizontal");
+        }
+        hitsTaken = 0;
     }
 
     Ship::~Ship()
@@ -50,6 +55,7 @@ namespace Battle
 
     bool Ship::occupies(int row, int col) const
     {
+        std::cout << direction << "is the direction";
         if (direction == nullptr)
             return false; // safety check
 
@@ -72,6 +78,7 @@ namespace Battle
         if (this->hitsTaken >= this->size)
         {
             std::cout << "the ship is already gone \n";
+            return;
         }
         else
         {
@@ -99,6 +106,7 @@ namespace Battle
     }
 
     void Ship::printShip(){
-        std::cout << "ship name - [" << this->name << "] | size - [" << size << "] | hits taken - [" << hitsTaken << "] \n";
+        std::cout << "ship name - [" << this->name << "] | size - [" << 
+        size << "] | hits taken - [" << hitsTaken << "] | starting indexs [" << startingX << "," << startingY << "] | direction - [" << direction << "]" << "\n";
     }
 }

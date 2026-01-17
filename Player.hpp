@@ -42,6 +42,7 @@ namespace Battle
         void SetPlayerName(const char* shipName);
         int getShipCount();
         void ClearShips();
+        void printAllShips();
 
         Grid& getGrid() { return grid; }
         Ship* getShip(int index) { return ships[index]; }
