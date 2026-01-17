@@ -36,7 +36,15 @@ namespace Battle
     };
 
     //["Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"]
-        class BattleShip : public Ship
+    class Carrier : public Ship
+    {
+    public:
+         const char* getType() const override { return "Carrier"; }
+         Carrier(int row, int col, const char* dir) 
+            : Ship("Carrier", 4, row, col, dir) {}
+    };
+
+   class BattleShip : public Ship
     {
     public:
          const char* getType() const override { return "BattleShip"; }
