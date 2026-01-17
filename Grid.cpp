@@ -27,7 +27,7 @@ namespace Battle
     {
         if (row >= 10 || row < 0 || col >= 10 || col < 0)
         {
-            std::cout << "this tile is out of range \n";
+            std::cout << "Starting tile is out of range\n";
         }
         if ((this->cells[row][col] == 'S') || (this->cells[row][col] == 'X'))
         {
@@ -168,35 +168,14 @@ namespace Battle
     }
     void Grid::printGrid()
     {
-        // for (int row = 0; row < 10; ++row)
-        // {
-        //     std::cout << "-----------------------------\n";
-
-        //     std::cout << "|";
-        //     for (int col = 0; col < 10; ++col)
-        //     {
-        //         std::cout << " " << this->cells[row][col] << " |";
-        //     }
-        //     std::cout << "\n";
-        // }
-        // std::cout << "-----------------------------\n";
-        // Print Column Numbers at the top
-        // 1. Column Numbers: Start from 0 to 9
         std::cout << "     0   1   2   3   4   5   6   7   8   9\n";
-        
-        // 2. Loop from index 9 down to 0
-        // This ensures index 0 is visually at the bottom
-        for (int row = 9; row >= 0; --row)
+        for (int row = 0; row < 10; ++row)
         {
             std::cout << "   -----------------------------------------\n";
-
-            // 3. Row Number: Print the raw index 'row' (0-9)
-            // Space padding for single digits to keep the grid aligned
             std::cout << " " << row << " |";
 
             for (int col = 0; col < 10; ++col)
             {
-                // Internal array access: cells[row][col]
                 std::cout << " " << this->cells[row][col] << " |";
             }
             std::cout << "\n";
