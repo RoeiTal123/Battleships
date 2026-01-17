@@ -10,5 +10,6 @@ namespace Battle
 {
     AIPlayer::~AIPlayer()
     {
+        
     }
 }

@@ -27,7 +27,7 @@ namespace Battle
             return "default";
         }
 
-        Ship(const char* shipName, int shipSize, int givenX, int givenY, const char* direction);
+        Ship(const char* shipName, int shipSize = 0, int givenX = 0, int givenY = 0, const char* direction = "horizontal");
         virtual ~Ship();
         virtual void takeHit();
         bool occupies(int row, int col) const;

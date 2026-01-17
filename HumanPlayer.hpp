@@ -17,6 +17,6 @@ namespace Battle
         void placeAllShips() override;
         void makeMove(Player* opponent) override;
         
-        virtual ~HumanPlayer() = default;
+        virtual ~HumanPlayer();
     };
 }

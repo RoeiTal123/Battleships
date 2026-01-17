@@ -15,6 +15,6 @@ namespace Battle
         /* data */
    public:
         AIPlayer(const char* name) : Player(name) {}
-        virtual ~AIPlayer() = default;
+        virtual ~AIPlayer();
     };
 }

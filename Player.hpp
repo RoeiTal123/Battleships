@@ -15,8 +15,6 @@ namespace Battle
         char* playerName;
         Ship* ships[5]; // Pointers to ships the player has
         Grid grid; // 10 x 10
-        int shipCount;
-
         int shipCount; // for general purposes only
 
     public:
@@ -37,7 +35,7 @@ namespace Battle
         Player(const char* name); // Initializes playerName and constructs grid
         Player();
         virtual ~Player(); // Cleans up playerName and Ship pointers.
-        Player& Player::operator=(const Player& other);
+        Player& operator=(const Player& other);
 
         void SetPlayerName(const char* shipName);
         int getShipCount();

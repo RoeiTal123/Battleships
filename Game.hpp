@@ -32,6 +32,7 @@ namespace Battle
         Game(Player* p1, Player* p2); // Assigns two player objects (e.g., HumanPlayer vs. AiPlayer).
         Game();
         ~Game();
+        void test();
     };
     
 

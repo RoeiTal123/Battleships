@@ -16,7 +16,7 @@ namespace Battle
     void HumanPlayer::placeAllShips()
     {
         int shipSizes[] = {5, 4, 3, 3, 2}; // Standard Fleet
-        char *shipNames[] = {"Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"};
+        const char *shipNames[] = {"Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"};
 
         for (int i = 0; i < 5; i++)
         {

@@ -56,4 +56,9 @@ namespace Battle
     {
         
     }
+    void Game::test()
+    {
+        player1->getGrid().printGrid();
+        player2->getGrid().printGrid();
+    }
 }
