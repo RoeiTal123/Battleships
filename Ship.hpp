@@ -42,9 +42,9 @@ namespace Battle
              {
                  return "Carrier";
              }
-    
              Carrier(int row, int col, const char* dir) 
                 : Ship("Carrier", 5, row, col, dir) {} 
+
         };
     
         class BattleShip : public Ship
@@ -54,9 +54,9 @@ namespace Battle
              {
                  return "BattleShip";
              }
-    
              BattleShip(int row, int col, const char* dir) 
                 : Ship("Carrier", 5, row, col, dir) {} 
+
         };
     
         class Cruiser : public Ship
@@ -66,7 +66,6 @@ namespace Battle
              {
                  return "Cruiser";
              }
-    
              Cruiser(int row, int col, const char* dir) 
                 : Ship("Carrier", 5, row, col, dir) {}  
         };
@@ -78,7 +77,6 @@ namespace Battle
              {
                  return "Submarine";
              }
-    
              Submarine(int row, int col, const char* dir) 
                 : Ship("Carrier", 5, row, col, dir) {} 
         };
@@ -90,7 +88,6 @@ namespace Battle
              {
                  return "Destroyer";
              }
-    
              Destroyer(int row, int col, const char* dir) 
                 : Ship("Carrier", 5, row, col, dir) {} 
         };
