@@ -43,8 +43,8 @@ namespace Battle
                  return "Carrier";
              }
     
-            Carrier()
-                : Ship("Carrier", 5, 0, 0, "north") {} 
+             Carrier(int row, int col, const char* dir) 
+                : Ship("Carrier", 5, row, col, dir) {} 
         };
     
         class BattleShip : public Ship
@@ -55,8 +55,8 @@ namespace Battle
                  return "BattleShip";
              }
     
-             BattleShip()
-                : Ship("Battleship", 4, 0, 0, "north") {} 
+             BattleShip(int row, int col, const char* dir) 
+                : Ship("Carrier", 5, row, col, dir) {} 
         };
     
         class Cruiser : public Ship
@@ -67,8 +67,8 @@ namespace Battle
                  return "Cruiser";
              }
     
-             Cruiser()
-                : Ship("Cruiser", 3, 0, 0, "north") {} 
+             Cruiser(int row, int col, const char* dir) 
+                : Ship("Carrier", 5, row, col, dir) {}  
         };
 
         class Submarine : public Ship
@@ -79,8 +79,8 @@ namespace Battle
                  return "Submarine";
              }
     
-             Submarine()
-                : Ship("Submarine", 3, 0, 0, "north") {} 
+             Submarine(int row, int col, const char* dir) 
+                : Ship("Carrier", 5, row, col, dir) {} 
         };
     
         class Destroyer : public Ship
@@ -91,7 +91,7 @@ namespace Battle
                  return "Destroyer";
              }
     
-             Destroyer()
-                : Ship("Destroyer", 2, 0, 0, "north") {} 
+             Destroyer(int row, int col, const char* dir) 
+                : Ship("Carrier", 5, row, col, dir) {} 
         };
 }

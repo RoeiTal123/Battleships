@@ -39,6 +39,7 @@ namespace Battle
     {
         if (player1->allShipsSunk() || player2->allShipsSunk())
             return true;
+        return false;
     }
 
     Game::Game(Player *p1, Player *p2)

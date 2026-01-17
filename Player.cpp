@@ -53,39 +53,13 @@ namespace Battle
 
     void Player::placeAllShips() // AIPlayer will used this funtion, Overide will be made for HumanPlayer
     {
-        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count(); // Create a random seed based on the system_clock
-        std::default_random_engine engine(seed);                                     // Feed that seed into a random number engine
-        std::uniform_int_distribution<int> RandomAxisPoint(0, 9);
-        std::uniform_int_distribution<int> RandomBool(0, 1);
 
-        int shipSizes[] = {5, 4, 3, 3, 2}; // Standard Fleet
-
-        for (int size : shipSizes)
-        {
-            bool placed = false;
-
-            while (!placed)
-            {
-                int row = RandomAxisPoint(engine);
-                int col = RandomAxisPoint(engine);
-                bool horizontal = RandomBool(engine);
-
-                if (grid.inBounds(row, col, size, horizontal))
-                {
-                    grid.placeShip(row, col, size, horizontal);
-                    placed = true; // Exit
-                }
-            }
-        }
     }
 
     void Player::makeMove(Player *opponent)
     {
-        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count(); // Create a random seed based on the system_clock
-        std::default_random_engine engine(seed);                                     // Feed that seed into a random number engine
-        std::uniform_int_distribution<int> RandomAxisPoint(0, 9);
-
-        int row = RandomAxisPoint(engine), col = RandomAxisPoint(engine);
+        int row = rand();
+        int col = rand();
 
         if (opponent->grid.getCell(row, col) == 'S')
         {
@@ -103,6 +77,11 @@ namespace Battle
 
     void Player::addShip(Ship* newShip){
         ships[shipCount++] = newShip;
+    }
+
+    int Battle::Player::getRandomCoordinate()
+    {
+        return std::rand() % 10;
     }
 
     bool Player::allShipsSunk() const
@@ -127,10 +106,11 @@ namespace Battle
         SetPlayerName(name);
         ClearShips();
         shipCount = 0;
+
     }
 
     Player::Player()
-    {
+    { 
         SetPlayerName("default");
         ClearShips();
         shipCount = 0;
@@ -168,7 +148,6 @@ namespace Battle
     {
         for (int i = 0; i < 5; i++)
         {
-            delete ships[i];
             ships[i] = nullptr;
         }
     }

@@ -12,9 +12,11 @@ namespace Battle
     class AIPlayer : public Player
     {
     private:
-        /* data */
-   public:
+        
+    public:
         AIPlayer(const char* name) : Player(name) {}
+        
+        void placeAllShips() override;
         virtual ~AIPlayer();
     };
 }

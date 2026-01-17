@@ -17,19 +17,24 @@ int main() {
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
     // Create two players: one human, one AI
-    Player* p1 = new HumanPlayer("Human");
+    Player* p1 = new AIPlayer("Human");
     Player* p2 = new AIPlayer("Computer");
 
+    p1->placeAllShips();
+    p2->placeAllShips();
+
+    p1->displayGrid();
+
     // Create the Game object with the two players
-    Game game(p1, p2);
+    //Game game(p1, p2);
 
     // Set up the game (place all ships)
-    game.setup();
+    //game.setup();
 
-    game.test();
+    //game.test();
 
     // Start the turn-by-turn gameplay
-    game.start();
+    //game.start();
 
     // If needed, you could delete the players here, but assume Game or Player destructors handle cleanup.
     // delete p1;

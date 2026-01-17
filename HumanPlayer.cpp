@@ -15,7 +15,8 @@ namespace Battle
 
     void HumanPlayer::placeAllShips()
     {
-        int shipSizes[] = {5, 4, 3, 3, 2}; // Standard Fleet
+        std::cout << "Manuel Ship Placement!" << std::endl; 
+        int shipSizes[] = {5, 4, 3, 3, 2};
         const char *shipNames[] = {"Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"};
 
         for (int i = 0; i < 5; i++)
@@ -27,38 +28,42 @@ namespace Battle
 
             while (!placed)
             {
-                std::cout << "Enter row: ";
+                std::cout << "\nPlacing " << shipNames[i] << " (Size " << shipSizes[i] << ")" << std::endl;
+                std::cout << "Enter row (0-9): "; 
                 std::cin >> row;
-                row--;
-                std::cout << "Enter col: ";
-                std::cin >> col; // user will enter 'row 1' which would be 0, so row n is actually n-1
-                col--;
-                std::cout << "Horizontal? ";
+                std::cout << "Enter col (0-9): "; 
+                std::cin >> col;
+                
+                std::cout << "Horizontal? (yes/no): ";
                 std::cin >> input;
-                if (input == "no" || input == "No" || input == "NO" || input == "nO")
-                {
-                    horizontal = false;
-                }
-                else
-                {
-                    horizontal = true;
-                }
+                horizontal = !(input == "no" || input == "No" || input == "NO" || input == "nO");
+                
                 const char *direction = (horizontal) ? "horizontal" : "vertical";
 
-                if (grid.isTileOccupied(row, col))
-                {
-                    std::cout << "Tile is occupied";
+                // Validation logic
+                if (!grid.inBounds(row, col, shipSizes[i], horizontal)) {
+                    std::cout << "Error: Ship is off the grid!" << std::endl;
+                    continue;
                 }
-                if (!grid.inBounds(row, col, shipSizes[i], horizontal))
-                {
-                    std::cout << "Ship is off the grid";
+                if (grid.isTileOccupied(row, col)) { // Note: You should ideally check all tiles the ship covers
+                    std::cout << "Error: Tile is occupied!" << std::endl;
+                    continue;
                 }
-                else if (!grid.isTileOccupied(row, col) && grid.inBounds(row, col, shipSizes[i], horizontal))
+
+                // Create the specific subclass based on the index 'i'
+                Ship *newShip = nullptr;
+                if (i == 0)      newShip = new Carrier(row, col, direction);
+                else if (i == 1) newShip = new BattleShip(row, col, direction);
+                else if (i == 2) newShip = new Cruiser(row, col, direction);
+                else if (i == 3) newShip = new Submarine(row, col, direction);
+                else if (i == 4) newShip = new Destroyer(row, col, direction);
+
+                if (newShip)
                 {
-                    Ship *newShip = new Ship(shipNames[i], shipSizes[i], row, col, direction);
                     addShip(newShip);
                     grid.placeShip(row, col, shipSizes[i], horizontal);
                     placed = true;
+                    std::cout << shipNames[i] << " placed successfully!" << std::endl;
                 }
             }
         }

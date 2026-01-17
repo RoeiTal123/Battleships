@@ -30,6 +30,8 @@ namespace Battle
 
         void addShip(Ship* ship);
 
+        int getRandomCoordinate();
+
         void displayGrid(); // Print the grip (Somehow...)
 
         Player(const char* name); // Initializes playerName and constructs grid
