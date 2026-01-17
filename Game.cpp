@@ -24,14 +24,14 @@ namespace Battle
             // Player 1 Turn
             std::cout << "\n--- Player 1's Turn ---" << std::endl;
             player1->makeMove(player2);
-            if (player2->allShipsSunk()) { // Check immediately
+            if (isGameOver() == true) { // Check immediately
                 std::cout << "Player 1 wins! All enemy ships sunk." << std::endl;
                 break; 
             }
             // Player 2 Turn
             std::cout << "\n--- Player 2's Turn ---" << std::endl;
             player2->makeMove(player1);
-            if (player1->allShipsSunk()) {
+            if (isGameOver() == true) {
                 std::cout << "Player 2 wins! All enemy ships sunk." << std::endl;
                 break;
             }
@@ -41,9 +41,18 @@ namespace Battle
 
     bool Game::isGameOver() const
     {
-        player1->displayGrid();
-        player2->displayGrid();
-        return player1->allShipsSunk() || player2->allShipsSunk();
+        if (player1->allShipsSunk() || player2->allShipsSunk() == true)
+        {
+            std::cout << "\n--- Player 1's Ships and Grid ---" << std::endl;
+            player1->printAllShips();
+            player1->displayGrid();
+            std::cout << "\n--- Player 2's Ships and Grid ---" << std::endl;
+            player2->printAllShips();
+            player2->displayGrid();
+            return true;
+        }
+        
+        return false;
     }
 
     Game::Game(Player *p1, Player *p2)

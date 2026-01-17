@@ -31,22 +31,8 @@ namespace Battle
                 std::cout << "\nPlacing " << shipNames[i] << " (Size " << shipSizes[i] << ")" << std::endl;
                 std::cout << "Enter row (0-9): "; 
                 std::cin >> row;
-                if (!(std::cin >> row)) 
-                {
-                    std::cin.clear(); // Reset fail flag
-                    std::cin.ignore(1000, '\n'); // Clear the bad input
-                    std::cout << "Invalid input! Use numbers 0-9." << std::endl;
-                    continue;
-                }
                 std::cout << "Enter col (0-9): "; 
                 std::cin >> col;
-                if (!(std::cin >> col)) 
-                {
-                    std::cin.clear(); // Reset fail flag
-                    std::cin.ignore(1000, '\n'); // Clear the bad input
-                    std::cout << "Invalid input! Use numbers 0-9." << std::endl;
-                    continue;
-                }
                 
                 std::cout << "Horizontal? (yes/no): ";
                 std::cin >> input;
@@ -108,7 +94,9 @@ namespace Battle
             opponent->getGrid().markMiss(row, col);
         }
 
-        this->grid.printGrid();
-        opponent->getGrid().printGrid();
+        std::cout << "\n--- Player's Grid ---" << std::endl;
+        this->displayGrid();
+        std::cout << "\n--- Opponent's Grid ---" << std::endl;
+        opponent->displayGrid();
     }
 }
