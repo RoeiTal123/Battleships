@@ -44,7 +44,7 @@ namespace Battle
              }
     
             Carrier()
-                : Ship("Carrier", 5, 0, 0, "north") {} 
+                : Ship("Carrier", 5, 0, 0, "horizontal") {} 
         };
     
         class BattleShip : public Ship
@@ -56,7 +56,7 @@ namespace Battle
              }
     
              BattleShip()
-                : Ship("Battleship", 4, 0, 0, "north") {} 
+                : Ship("Battleship", 4, 0, 0, "horizontal") {} 
         };
     
         class Cruiser : public Ship
@@ -68,7 +68,7 @@ namespace Battle
              }
     
              Cruiser()
-                : Ship("Cruiser", 3, 0, 0, "north") {} 
+                : Ship("Cruiser", 3, 0, 0, "horizontal") {} 
         };
 
         class Submarine : public Ship
@@ -80,7 +80,7 @@ namespace Battle
              }
     
              Submarine()
-                : Ship("Submarine", 3, 0, 0, "north") {} 
+                : Ship("Submarine", 3, 0, 0, "horizontal") {} 
         };
     
         class Destroyer : public Ship
@@ -92,6 +92,6 @@ namespace Battle
              }
     
              Destroyer()
-                : Ship("Destroyer", 2, 0, 0, "north") {} 
+                : Ship("Destroyer", 2, 0, 0, "horizontal") {} 
         };
 }
