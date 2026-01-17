@@ -18,10 +18,10 @@ namespace Battle
     {
         int round = 1;
         bool gameLoop = true;
-        std::cout << "\n Game Started!" << std::endl;
+        std::cout << "\n------------Game Started!------------" << std::endl;
         while (gameLoop) {
 
-            std::cout << "Round:" << round << std::endl;
+            std::cout << "\nRound:" << round << std::endl;
             // Player 1 Turn
             std::cout << "\n--- Player 1's Turn ---" << std::endl;
             player1->makeMove(player2);

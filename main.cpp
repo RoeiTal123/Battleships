@@ -28,6 +28,8 @@ int main() {
 
     game.test();
 
+    // game.test();
+
     // Start the turn-by-turn gameplay
     game.start();
 
