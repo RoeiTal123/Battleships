@@ -8,23 +8,17 @@
 
 namespace Battle
 {
-    Ship::Ship(const char *name, int shipSize, int givenX, int givenY, const char *dir) 
-        : name(nullptr), direction(nullptr), hitsTaken(0)
+    Ship::Ship(const char *name, int shipSize, int givenX, int givenY, const char *dir) : name(nullptr), direction(nullptr), hitsTaken(0)
     {
         SetName(name);
         SetSize(shipSize);
         startingX = givenX;
         startingY = givenY;
-        this->direction = new char[strlen(direction) + 1];
-        if (direction)
-        {
-            strcpy(this->direction, direction);
-        }
-        else
-        {
-            strcpy(this->direction, "horizontal");
-        }
-        hitsTaken = 0;
+
+        const char* sourceDir = (dir != nullptr) ? dir : "horizontal";
+
+        this->direction = new char[strlen(sourceDir) + 1];
+        strcpy(this->direction, sourceDir);
     }
 
     Ship::~Ship()

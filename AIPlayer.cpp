@@ -33,7 +33,6 @@ namespace Battle
                     continue;
                 }
 
-                // 3. Create the specific ship subclass (Fixes the Null Pointer/Segfault)
                 Ship* newShip = nullptr;
                 if (i == 0)      newShip = new Carrier(row, col, direction);
                 else if (i == 1) newShip = new BattleShip(row, col, direction);
@@ -41,10 +40,9 @@ namespace Battle
                 else if (i == 3) newShip = new Submarine(row, col, direction);
                 else if (i == 4) newShip = new Destroyer(row, col, direction);
 
-                // 4. Register the ship to the Player's array and the Grid
                 if (newShip)
                 {
-                    addShip(newShip); // This fills the ships[i] array used in allShipsSunk()
+                    addShip(newShip); 
                     grid.placeShip(row, col, size, horizontal);
                     placed = true;
                 }
