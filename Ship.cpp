@@ -99,4 +99,8 @@ namespace Battle
             return false;
         }
     }
+
+    void Ship::printShip(){
+        std::cout << "ship name - [" << this->name << "] | size - [" << size << "] | hits taken - [" << hitsTaken << "] \n";
+    }
 }

@@ -32,6 +32,8 @@ namespace Battle
         virtual void takeHit();
         bool occupies(int row, int col) const;
         bool isSunk();
+
+        void printShip();
     };
 
     //["Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"]
