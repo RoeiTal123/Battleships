@@ -26,9 +26,7 @@ int main() {
     // Set up the game (place all ships)
     game.setup();
 
-    game.test();
-
-    // game.test();
+    //game.test();
 
     // Start the turn-by-turn gameplay
     game.start();
