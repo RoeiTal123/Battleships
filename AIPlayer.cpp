@@ -9,7 +9,7 @@
 namespace Battle
 {
 
-    void AIPlayer::placeAllShips()
+    void AIPlayer::placeAllShips() // Automatic ship placement
     {
         int shipSizes[] = {5, 4, 3, 3, 2};
     
@@ -18,7 +18,7 @@ namespace Battle
             int size = shipSizes[i];
             bool placed = false;
 
-            while (!placed)
+            while (!placed) // Create random ship placement values until excepted
             {
                 int row = getRandomCoordinate();
                 int col = getRandomCoordinate();
@@ -33,7 +33,7 @@ namespace Battle
                     continue;
                 }
 
-                Ship* newShip = nullptr;
+                Ship* newShip = nullptr; // Create new ship matching the Index
                 if (i == 0)      newShip = new Carrier(row, col, direction);
                 else if (i == 1) newShip = new BattleShip(row, col, direction);
                 else if (i == 2) newShip = new Cruiser(row, col, direction);
@@ -50,7 +50,7 @@ namespace Battle
         }
     }
 
-    void AIPlayer::makeMove(Player *opponent)
+    void AIPlayer::makeMove(Player *opponent) // Make a random move on the grid
     {
         int row, col;
         char targetCell;

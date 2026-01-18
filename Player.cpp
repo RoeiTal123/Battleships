@@ -37,7 +37,7 @@ namespace Battle
         { 
             if (other.ships[i])
             {
-                // ships[i] = other.ships[i]->clone(); // Need a virtuale clone
+                // ships[i] = other.ships[i]->clone();
             }
             else
             {
@@ -51,15 +51,15 @@ namespace Battle
         return *this;
     }
 
-    void Player::placeAllShips(){}
+    void Player::placeAllShips(){} // Placeholder for Human and AI veriants
 
-    void Player::makeMove(Player *opponent){}
+    void Player::makeMove(Player *opponent){} // Placeholder for Human and AI veriants
 
     void Player::addShip(Ship* newShip)
     {
         if (shipCount < 5) 
         {
-            ships[shipCount] = newShip; // Ensure this is not a fixed index like [0]
+            ships[shipCount] = newShip;
             shipCount++;
         }
     }
@@ -137,14 +137,14 @@ namespace Battle
         return shipCount;
     }
     
-    void Player::ClearShips()
+    void Player::ClearShips() // Set all ship pointers to Null
     {
         for (int i = 0; i < 5; i++)
         {
             ships[i] = nullptr;
         }
     }
-    void Player::printAllShips()
+    void Player::printAllShips() // Print all the ships a player has
     {
         for (int i = 0; i < 5; i++)
         {

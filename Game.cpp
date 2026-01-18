@@ -8,13 +8,13 @@
 
 namespace Battle
 {
-    void Game::setup()
+    void Game::setup() // Place all ships
     {
         player1->placeAllShips();
         player2->placeAllShips();
     }
 
-    void Game::start()
+    void Game::start() // Main game loop
     {
         int round = 1;
         bool gameLoop = true;
@@ -25,7 +25,7 @@ namespace Battle
             // Player 1 Turn
             std::cout << "\n--- Player 1's Turn ---" << std::endl;
             player1->makeMove(player2);
-            if (isGameOver() == true) { // Check immediately
+            if (isGameOver() == true) { 
                 std::cout << "Player 1 wins! All enemy ships sunk." << std::endl;
                 break; 
             }
@@ -40,7 +40,7 @@ namespace Battle
         }
     }
 
-    bool Game::isGameOver() const
+    bool Game::isGameOver() const // Game summery
     {
         if (player1->allShipsSunk() || player2->allShipsSunk() == true)
         {
@@ -56,22 +56,17 @@ namespace Battle
         return false;
     }
 
-    Game::Game(Player *p1, Player *p2)
+    Game::Game(Player *p1, Player *p2) // create a game object
     {
         player1 = p1;
         player2 = p2;
     }
 
-    Game::Game()
-    {
-
-    }
+    Game::Game(){}
     
-    Game::~Game()
-    {
-        
-    }
-    void Game::test()
+    Game::~Game(){}
+    
+    void Game::test() // May be printed after ships are placed to see the setup of each player
     {
         player1->getGrid().printGrid();
         player2->getGrid().printGrid();
