@@ -8,7 +8,7 @@
 
 namespace Battle
 {
-    Grid::Grid()
+    Grid::Grid() // default and only constructor
     {
         for (int i = 0; i < 10; ++i)
         {
@@ -19,11 +19,11 @@ namespace Battle
         }
     }
 
-    Grid::~Grid()
+    Grid::~Grid() // no pointers are used so it deletes it by default
     {
     }
 
-    bool Grid::isTileOccupied(int row, int col) const
+    bool Grid::isTileOccupied(int row, int col) const // checks if the tile is occupied if input is correct
     {
         if (row >= 10 || row < 0 || col >= 10 || col < 0)
         {
@@ -39,7 +39,7 @@ namespace Battle
         }
     }
 
-    bool Grid::inBounds(int row, int col, int shipSize, bool horizontal) const
+    bool Grid::inBounds(int row, int col, int shipSize, bool horizontal) const // checks if the ship can be placed
     {
         if (row >= 10 || row < 0 || col >= 10 || col < 0)
         {
@@ -56,7 +56,7 @@ namespace Battle
             {
                 if (cells[row][i] != '~')
                 { 
-                    //std::cout << "The ship reaches out of bounds\n";
+                    std::cout << "The ship reaches out of bounds\n";
                     return false;
                 }
             }
@@ -70,7 +70,7 @@ namespace Battle
             {
                 if (cells[i][col] != '~')
                 { 
-                    //std::cout << "The ship reaches out of bounds\n";
+                    std::cout << "The ship reaches out of bounds\n";
                     return false;
                 }
             }
@@ -78,7 +78,7 @@ namespace Battle
 
         if (endRow >= 10 || endCol >= 10)
         {
-            //std::cout << "the ship reaches out of bounds \n";
+            std::cout << "the ship reaches out of bounds \n";
             return false;
         }
         else
@@ -87,7 +87,7 @@ namespace Battle
         }
     }
 
-    void Grid::placeShip(int row, int col, int shipSize, bool horizontal)
+    void Grid::placeShip(int row, int col, int shipSize, bool horizontal) // places the ship on the grid if it can be placed
     {
         if (this->inBounds(row, col, shipSize, horizontal))
         {
@@ -112,7 +112,7 @@ namespace Battle
         }
     }
 
-    void Grid::markHit(int row, int col)
+    void Grid::markHit(int row, int col) // marks a hit on the map depending on the what at that cell
     {
         if (row < 0 || row >= 10 || col < 0 || col >= 10)
         {
@@ -132,7 +132,8 @@ namespace Battle
             std::cout << "Tile [" << row << "][" << col << "] has already been attacked\n";
         }
     }
-    void Grid::markHitSimple(int row, int col)
+
+    void Grid::markHitSimple(int row, int col) // second version of the prior function
     {
         if (row < 0 || row >= 10 || col < 0 || col >= 10)
         {
@@ -149,7 +150,7 @@ namespace Battle
 
     }
 
-    void Grid::markMiss(int row, int col)
+    void Grid::markMiss(int row, int col) // marks a miss by a M on the grid
     {
         if (row < 0 || row >= 10 || col < 0 || col >= 10)
         {
@@ -169,7 +170,8 @@ namespace Battle
             std::cout << "Tile [" << row << "][" << col << "] has already been attacked\n";
         }
     }
-    void Grid::markMissSimple(int row, int col)
+
+    void Grid::markMissSimple(int row, int col) // second version of the prior function
     {
         if (row < 0 || row >= 10 || col < 0 || col >= 10)
         {
@@ -185,24 +187,24 @@ namespace Battle
         }
     }
 
-    char Grid::getCell(int row, int col) const
+    char Grid::getCell(int row, int col) const  // gives the value at the given cell if it's in range
     {
         if (row < 0 || row >= 10 || col < 0 || col >= 10)
         {
             std::cout << "This tile is out of range\n";
-            return 'E';
+            return 'E'; // E for Error
         }
         else
         {
             return this->cells[row][col];
         }
     }
-    void Grid::printGrid()
+    void Grid::printGrid() // prints the grid with a row and column count
     {
         std::cout << "     0   1   2   3   4   5   6   7   8   9\n";
         for (int row = 0; row < 10; ++row) {
             std::cout << "   -----------------------------------------\n";
-            std::cout << " " << row << " |"; // Print row index
+            std::cout << " " << row << " |"; 
             for (int col = 0; col < 10; ++col) {
                 std::cout << " " << cells[row][col] << " |";
             }

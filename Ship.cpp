@@ -19,17 +19,17 @@ namespace Battle
 
         this->direction = new char[strlen(sourceDir) + 1];
         strcpy(this->direction, sourceDir);
-    }
+    } // Ship constructor, all ship types have default name and size
 
     Ship::~Ship()
     {
         delete[] name;
         delete[] direction;
-    }
+    } // Ship destructor, deletes the 2 strings in every Ship
 
     void Ship::SetSize(int size) // sets size
     {
-        this->size = size;
+        this -> size = size;
     }
 
     void Ship::SetName(const char *n) // sets name
@@ -47,7 +47,7 @@ namespace Battle
         }
     }
 
-    bool Ship::occupies(int row, int col) const
+    bool Ship::occupies(int row, int col) const // checks if a part of the Ship is inside the space of a Grid using direction and position
     {
         if (direction == nullptr)
             return false; // safety check
@@ -66,7 +66,7 @@ namespace Battle
         return false;
     }
 
-    void Ship::takeHit()
+    void Ship::takeHit() // increases the hitsTaken count until it reachs size
     {
         if (this->hitsTaken >= this->size)
         {
@@ -86,7 +86,7 @@ namespace Battle
         }
     }
 
-    bool Ship::isSunk()
+    bool Ship::isSunk() // checks if the Ship had been sunk
     {
         if (this->hitsTaken >= this->size)
         {
@@ -98,8 +98,9 @@ namespace Battle
         }
     }
 
-    void Ship::printShip(){
+    void Ship::printShip(){ // prints all ship details
         std::cout << "ship name - [" << this->name << "] | size - [" << 
-        size << "] | hits taken - [" << hitsTaken << "] | starting indexs [" << startingX << "," << startingY << "] | direction - [" << direction << "]" << "\n";
+        size << "] | hits taken - [" << hitsTaken << "] | starting indexs [" << 
+        startingX << "," << startingY << "] | direction - [" << direction << "]" << "\n";
     }
 }

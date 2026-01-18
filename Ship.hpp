@@ -35,13 +35,13 @@ namespace Battle
         void printShip();
     };
 
-    //["Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"]
+    // the subclasses are ["Carrier", "Battleship", "Cruiser", "Submarine", "Destroyer"] in order of size
     class Carrier : public Ship
     {
     public:
          const char* getType() const override { return "Carrier"; }
          Carrier(int row, int col, const char* dir) 
-            : Ship("Carrier", 4, row, col, dir) {}
+            : Ship("Carrier", 5, row, col, dir) {}
     };
 
    class BattleShip : public Ship
